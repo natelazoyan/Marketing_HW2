@@ -54,6 +54,9 @@ ch.setLevel(log.DEBUG)
 ch.setFormatter(CustomFormatter())
 logger.addHandler(ch)
 
+Bandit_Reward = [1, 2, 3, 4]
+
+
 class Bandit(ABC):
     """Abstract class representing a Multi-Armed Bandit."""
     @abstractmethod
@@ -337,10 +340,10 @@ def comparison(num_trials):
     vis.store_rewards_to_csv(epsilon_greedy_rewards, thompson_rewards)
     vis.report_cumulative_reward_and_regret(epsilon_greedy_rewards, thompson_rewards)
 
+num_trials = 20000
+comparison(num_trials)
 
 if __name__=='__main__':
-    num_trials = 20000
-    comparison(num_trials)
 
     logger.debug("debug message")
     logger.info("info message")
